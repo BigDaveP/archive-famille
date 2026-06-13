@@ -55,7 +55,9 @@ export default function FinaleModal({
           <div className="text-sm leading-relaxed space-y-2 mb-5" style={{ color: 'var(--term-green-mid)' }}>
             <p>Félicitations, agents. Vous avez restauré les {TOTAL_ITEMS} archives perdues.</p>
             <p>L&apos;Archive Famille est sauvegardée. Le noyau est stable à 100%.</p>
-            <p className="text-base glow-gold" style={{ color: 'var(--term-gold)' }}>Votre famille vous remercie.</p>
+            <p className="text-base glow-gold" style={{ color: 'var(--term-gold)' }}>
+              Vous allez recevoir une livraison officielle par notre unité &quot;bêta&quot;.
+            </p>
           </div>
           <TransitionLink
             href="/archive"

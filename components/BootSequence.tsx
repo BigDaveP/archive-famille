@@ -5,19 +5,21 @@ import { playBoot, playKeyClick, playGlitch, playStaticBurst } from '@/lib/audio
 import { useProgress } from '@/lib/storage';
 import { TOTAL_ITEMS, isSystemComplete } from '@/lib/data';
 
-const LINES: { text: string; color?: string; delay: number }[] = [
-  { text: 'ARCHIVE_CORE_V.0.95 — INITIALISATION DU SYSTÈME...', delay: 0 },
-  { text: 'VÉRIFICATION DE L\'INTÉGRITÉ DES SECTEURS: [████████████] OK', delay: 500 },
-  { text: 'CHARGEMENT DES PROTOCOLES DE SÉCURITÉ FAMILIALE...', delay: 1100 },
-  { text: '⚠  ALERTE CRITIQUE: CORRUPTION DÉTECTÉE DANS LE NOYAU FAMILIAL', color: '#ffcc00', delay: 1800 },
-  { text: '⚠  FUITE DE DONNÉES EN COURS — 138 ARCHIVES PERDUES', color: '#ffcc00', delay: 2300 },
-  { text: 'TENTATIVE DE RÉCUPÉRATION: EN COURS...', delay: 2900 },
-  { text: 'ACCÈS AU TERMINAL DE SÉCURITÉ RESTREINT: ACCORDÉ', color: '#33ff33', delay: 3600 },
-  { text: '────────────────────────────────────────────────────────────', color: '#0f2a0f', delay: 4100 },
-  { text: 'BIENVENUE, AGENT. LA MISSION COMMENCE.', color: '#66ff66', delay: 4400 },
-  { text: '', delay: 4800 },
-  { text: '>>> APPUYEZ SUR UNE TOUCHE OU CLIQUEZ POUR ACCÉDER AU TERMINAL <<<', color: '#ffcc00', delay: 5000 },
-];
+function getBootLines(lostCount: number): { text: string; color?: string; delay: number }[] {
+  return [
+    { text: 'ARCHIVE_CORE_V.0.95 — INITIALISATION DU SYSTÈME...', delay: 0 },
+    { text: 'VÉRIFICATION DE L\'INTÉGRITÉ DES SECTEURS: [████████████] OK', delay: 500 },
+    { text: 'CHARGEMENT DES PROTOCOLES DE SÉCURITÉ FAMILIALE...', delay: 1100 },
+    { text: '⚠  ALERTE CRITIQUE: CORRUPTION DÉTECTÉE DANS LE NOYAU FAMILIAL', color: '#ffcc00', delay: 1800 },
+    { text: `⚠  FUITE DE DONNÉES EN COURS — ${lostCount} ARCHIVES PERDUES`, color: '#ffcc00', delay: 2300 },
+    { text: 'TENTATIVE DE RÉCUPÉRATION: EN COURS...', delay: 2900 },
+    { text: 'ACCÈS AU TERMINAL DE SÉCURITÉ RESTREINT: ACCORDÉ', color: '#33ff33', delay: 3600 },
+    { text: '────────────────────────────────────────────────────────────', color: '#0f2a0f', delay: 4100 },
+    { text: 'BIENVENUE, AGENT. LA MISSION COMMENCE.', color: '#66ff66', delay: 4400 },
+    { text: '', delay: 4800 },
+    { text: '>>> APPUYEZ SUR UNE TOUCHE OU CLIQUEZ POUR ACCÉDER AU TERMINAL <<<', color: '#ffcc00', delay: 5000 },
+  ];
+}
 
 const LINES_RESTORED: { text: string; color?: string; delay: number }[] = [
   { text: 'ARCHIVE_CORE_V.0.95 — INITIALISATION DU SYSTÈME...', delay: 0 },
@@ -36,7 +38,8 @@ export default function BootSequence() {
   const router = useRouter();
   const { count, hydrated } = useProgress();
   const restored = hydrated && isSystemComplete(count);
-  const bootLines = restored ? LINES_RESTORED : LINES;
+  const lostArchives = TOTAL_ITEMS - count;
+  const bootLines = restored ? LINES_RESTORED : getBootLines(lostArchives);
   const [visible, setVisible]         = useState(0);
   const [ready, setReady]             = useState(false);
   const [transitioning, setTransitioning] = useState(false);
@@ -55,7 +58,7 @@ export default function BootSequence() {
     setVisible(0);
     setReady(false);
     playBoot();
-    const lines = restored ? LINES_RESTORED : LINES;
+    const lines = restored ? LINES_RESTORED : getBootLines(lostArchives);
     const timers = lines.map((line, i) =>
       setTimeout(() => {
         setVisible(i + 1);
@@ -64,7 +67,7 @@ export default function BootSequence() {
       }, line.delay),
     );
     return () => timers.forEach(clearTimeout);
-  }, [restored]);
+  }, [restored, lostArchives]);
 
   useEffect(() => {
     if (!ready) return;

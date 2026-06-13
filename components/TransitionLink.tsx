@@ -7,18 +7,20 @@ interface Props {
   href: string;
   className?: string;
   style?: React.CSSProperties;
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  onBeforeNavigate?: () => void;
 }
 
 /**
  * Drop-in replacement for <Link> that plays the CRT power-off transition
  * before navigating. Use everywhere you'd use next/link for page navigation.
  */
-export default function TransitionLink({ href, className, style, children }: Props) {
+export default function TransitionLink({ href, className, style, children, onBeforeNavigate }: Props) {
   const router = useRouter();
 
   function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
     e.preventDefault();
+    onBeforeNavigate?.();
 
     // Sound effects — static burst + a few glitch pulses
     playStaticBurst();

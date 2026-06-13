@@ -1,9 +1,14 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import TransitionLink from '@/components/TransitionLink';
-import { ITEMS, TIER_COLORS, TOTAL_ITEMS, type Category, type Tier } from '@/lib/data';
+import { ITEMS, TIER_COLORS, TOTAL_ITEMS, nextLockedTier, TIER_THRESHOLDS, type Category, type Tier } from '@/lib/data';
 import { useProgress } from '@/lib/storage';
 import { playKeyClick } from '@/lib/audio';
+
+const ARCHIVE_SCROLL_KEY = 'havre:archive-scroll';
+const ARCHIVE_RESTORE_FLAG = 'havre:archive-restore';
+// Durée de l'animation PageShell + petite marge
+const SCROLL_RESTORE_DELAY = 600;
 
 type CatFilter    = Category | 'Tous';
 type TierFilter   = Tier | 'Tous';
@@ -17,6 +22,44 @@ export default function ArchiveTerminal() {
   const [tier, setTier]     = useState<TierFilter>('Tous');
   const [status, setStatus] = useState<StatusFilter>('Tous');
   const [search, setSearch] = useState('');
+
+  // Empêcher le navigateur de restaurer un scroll incorrect
+  useEffect(() => {
+    if (!('scrollRestoration' in history)) return;
+    const previous = history.scrollRestoration;
+    history.scrollRestoration = 'manual';
+    return () => { history.scrollRestoration = previous; };
+  }, []);
+
+  // Sauvegarder la position avant de quitter la liste
+  useEffect(() => {
+    const saveScroll = () => {
+      sessionStorage.setItem(ARCHIVE_SCROLL_KEY, String(window.scrollY));
+    };
+    window.addEventListener('scroll', saveScroll, { passive: true });
+    return () => {
+      saveScroll();
+      window.removeEventListener('scroll', saveScroll);
+    };
+  }, []);
+
+  // Restaurer la position uniquement au retour depuis une énigme
+  useEffect(() => {
+    if (sessionStorage.getItem(ARCHIVE_RESTORE_FLAG) !== '1') return;
+    sessionStorage.removeItem(ARCHIVE_RESTORE_FLAG);
+
+    const raw = sessionStorage.getItem(ARCHIVE_SCROLL_KEY);
+    if (!raw) return;
+
+    const y = Number(raw);
+    if (!Number.isFinite(y)) return;
+
+    const timer = window.setTimeout(() => {
+      window.scrollTo(0, y);
+    }, SCROLL_RESTORE_DELAY);
+
+    return () => window.clearTimeout(timer);
+  }, []);
 
   function itemStatus(id: string, req: number) {
     if (isUnlocked(id))  return 'Débloqué';
@@ -36,6 +79,7 @@ export default function ArchiveTerminal() {
 
   const filled  = Math.round((count / TOTAL_ITEMS) * 20);
   const pct     = Math.round((count / TOTAL_ITEMS) * 100);
+  const nextTier = nextLockedTier(count);
 
   function btn(label: string, active: boolean, onClick: () => void, color?: string) {
     return (
@@ -83,17 +127,13 @@ export default function ArchiveTerminal() {
             {' '}({pct}%)
           </span>
         </div>
-        {!hydrated ? null : count < 15 ? (
+        {!hydrated ? null : nextTier ? (
           <div style={{ color: 'var(--term-amber)' }}>
-            ⚠ ALERTE: DÉBLOQUEZ {15 - count} ARCHIVES DE PLUS POUR ACCÉDER AU NIVEAU BLEU
-          </div>
-        ) : count < 40 ? (
-          <div style={{ color: 'var(--term-cyan)' }}>
-            ✓ NIVEAU BLEU ACTIF — DÉBLOQUEZ {40 - count} DE PLUS POUR LE NIVEAU OR
+            ⚠ ALERTE: DÉBLOQUEZ {TIER_THRESHOLDS[nextTier] - count} ARCHIVES DE PLUS POUR ACCÉDER AU NIVEAU {nextTier.toUpperCase()}
           </div>
         ) : (
-          <div style={{ color: 'var(--term-gold)' }} className="glow-gold">
-            ✦ ACCÈS OR ACCORDÉ — TOUS LES DOSSIERS SONT ACCESSIBLES
+          <div style={{ color: 'var(--term-green)' }}>
+            ✓ TOUS LES NIVEAUX SONT ACCESSIBLES — {count}/{TOTAL_ITEMS} ARCHIVES RESTAURÉES
           </div>
         )}
       </div>
@@ -106,7 +146,7 @@ export default function ArchiveTerminal() {
           )}
         </div>
         <div className="flex flex-wrap gap-2 mb-2">
-          {(['Tous','Vert','Bleu','Or'] as TierFilter[]).map(t =>
+          {(['Tous','Vert','Bleu','Or','Jaune','Rouge'] as TierFilter[]).map(t =>
             btn(t.toUpperCase(), tier === t, () => setTier(t),
               t !== 'Tous' ? TIER_COLORS[t as Tier] : undefined)
           )}

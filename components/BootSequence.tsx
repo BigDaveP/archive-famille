@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import { playBoot, playKeyClick, playGlitch, playStaticBurst } from '@/lib/audio';
 import { useProgress } from '@/lib/storage';
+import { TOTAL_ITEMS } from '@/lib/data';
 
 const LINES: { text: string; color?: string; delay: number }[] = [
   { text: 'ARCHIVE_CORE_V.0.95 — INITIALISATION DU SYSTÈME...', delay: 0 },
@@ -54,7 +55,7 @@ export default function BootSequence() {
     return () => window.removeEventListener('keydown', handler);
   }, [ready, navigate]);
 
-  const progressFilled = Math.round((count / 150) * 20);
+  const progressFilled = Math.round((count / TOTAL_ITEMS) * 20);
 
   return (
     <div
@@ -89,7 +90,7 @@ export default function BootSequence() {
             INTÉGRITÉ DU SYSTÈME:{' '}
             <span style={{ color: 'var(--term-green)' }}>
               {'['}{'█'.repeat(progressFilled)}{'░'.repeat(20 - progressFilled)}{']'}
-              {' '}{count}/150 ARCHIVES
+              {' '}{count}/{TOTAL_ITEMS} ARCHIVES
             </span>
           </div>
         )}

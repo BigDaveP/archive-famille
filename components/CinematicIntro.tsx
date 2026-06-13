@@ -58,7 +58,7 @@ const LINES: CineLine[] = [
   { text: '══════════════════════════════════════════════════', delay: 15400, color: '#0f2a0f' },
   { text: '\u00A0', delay: 15700 },
   { text: 'MISSION  : RESTAURER L\'ARCHIVE FAMILLE', delay: 16100, color: '#ffcc00' },
-  { text: 'DOSSIERS : 150 FRAGMENTS À RÉCUPÉRER', delay: 16750, color: '#ffcc00' },
+  { text: 'DOSSIERS : 44 FRAGMENTS À RÉCUPÉRER', delay: 16750, color: '#ffcc00' },
   { text: '\u00A0', delay: 17400 },
   { text: '⚠  CE MESSAGE S\'AUTODÉTRUIRA DANS...', delay: 17900, color: '#ff3333', size: 'text-xl', glow: true },
 ];

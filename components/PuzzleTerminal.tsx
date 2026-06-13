@@ -9,6 +9,10 @@ type Phase = 'idle' | 'decrypting' | 'success' | 'error';
 
 const GLITCH = '!@#$%^&*<>?/|ABCDEFGHIJabcdefghij0123456789░▒▓█';
 
+function restoreArchiveScroll() {
+  sessionStorage.setItem('havre:archive-restore', '1');
+}
+
 function randomGlitch(len = 24) {
   return Array.from({ length: len }, () => GLITCH[Math.floor(Math.random() * GLITCH.length)]).join('');
 }
@@ -59,7 +63,7 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
     return (
       <div className="min-h-screen p-8 font-mono" style={{ background: 'var(--term-bg)', color: 'var(--term-red)' }}>
         <p>ERREUR: ARCHIVE {itemId} INTROUVABLE DANS LA BASE DE DONNÉES</p>
-        <TransitionLink href="/archive" className="underline mt-4 block" style={{ color: 'var(--term-green)' }}>
+        <TransitionLink href="/archive" onBeforeNavigate={restoreArchiveScroll} className="underline mt-4 block" style={{ color: 'var(--term-green)' }}>
           ← RETOUR AU MENU PRINCIPAL
         </TransitionLink>
       </div>
@@ -73,7 +77,7 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
 
       {/* Back */}
       <div className="mb-4">
-        <TransitionLink href="/archive" className="text-sm hover:underline" style={{ color: 'var(--term-green-dim)' }}>
+        <TransitionLink href="/archive" onBeforeNavigate={restoreArchiveScroll} className="text-sm hover:underline" style={{ color: 'var(--term-green-dim)' }}>
           ← RETOUR AU TERMINAL PRINCIPAL
         </TransitionLink>
       </div>
@@ -102,7 +106,7 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
           <div className="text-xl mb-2">⊘ ACCÈS REFUSÉ — SÉCURITÉ ACTIVE</div>
           <div>Ce dossier requiert {item.requiredUnlocks} archives restaurées.</div>
           <div className="mt-2" style={{ color: '#883333' }}>Progression: {count} / {item.requiredUnlocks}</div>
-          <TransitionLink href="/archive" className="block mt-4 underline" style={{ color: 'var(--term-green)' }}>
+          <TransitionLink href="/archive" onBeforeNavigate={restoreArchiveScroll} className="block mt-4 underline" style={{ color: 'var(--term-green)' }}>
             ← RETOURNER DÉBLOQUER D&apos;AUTRES DOSSIERS
           </TransitionLink>
         </div>
@@ -114,7 +118,7 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
           <div className="text-xl glow mb-3">✓ ARCHIVE DÉJÀ RESTAURÉE</div>
           <div className="text-2xl mb-2" style={{ color: tierColor }}>{item.displayName}</div>
           <div className="text-sm leading-relaxed mt-3">{item.cardDescription}</div>
-          <TransitionLink href="/archive" className="block mt-6 underline text-sm" style={{ color: 'var(--term-green-dim)' }}>
+          <TransitionLink href="/archive" onBeforeNavigate={restoreArchiveScroll} className="block mt-6 underline text-sm" style={{ color: 'var(--term-green-dim)' }}>
             ← RETOUR
           </TransitionLink>
         </div>
@@ -154,7 +158,7 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
                 <div className="text-xl glow mb-2">✓ ARCHIVE RESTAURÉE !</div>
                 <div className="text-2xl mb-2" style={{ color: tierColor }}>{item.displayName}</div>
                 <div className="text-base leading-relaxed mt-3">{item.cardDescription}</div>
-                <TransitionLink href="/archive" className="block mt-4 underline text-sm" style={{ color: 'var(--term-green-dim)' }}>
+                <TransitionLink href="/archive" onBeforeNavigate={restoreArchiveScroll} className="block mt-4 underline text-sm" style={{ color: 'var(--term-green-dim)' }}>
                   ← RETOUR À LA LISTE
                 </TransitionLink>
               </div>

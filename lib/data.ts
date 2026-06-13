@@ -602,6 +602,17 @@ export const ITEMS: ArchiveItem[] = [
 
 export const TOTAL_ITEMS = ITEMS.length;
 
+/** Dernière archive — débloquer celle-ci complète le système */
+export const LAST_ITEM_ID = ITEMS[ITEMS.length - 1]!.id;
+
+export function isFinalArchive(id: string): boolean {
+  return id === LAST_ITEM_ID;
+}
+
+export function isSystemComplete(unlockCount: number): boolean {
+  return unlockCount >= TOTAL_ITEMS;
+}
+
 const TIER_ORDER: Tier[] = ['Vert', 'Bleu', 'Or', 'Jaune', 'Rouge'];
 
 /** Prochain niveau verrouillé selon le nombre d'archives restaurées, ou null si tout est ouvert */

@@ -62,6 +62,15 @@ export function playUnlock(): void {
   );
 }
 
+export function playFinale(): void {
+  [262, 330, 392, 523, 659, 784, 1047].forEach((f, i) =>
+    beep(f, 0.14, 'sine', 0.13, i * 0.12),
+  );
+  [880, 1100, 1320, 1760].forEach((f, i) =>
+    beep(f, 0.2, 'triangle', 0.1, 0.9 + i * 0.15),
+  );
+}
+
 export function playGlitch(): void {
   beep(Math.random() * 800 + 200, 0.04, 'square', 0.06);
 }

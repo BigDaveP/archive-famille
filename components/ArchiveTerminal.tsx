@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo, useEffect } from 'react';
 import TransitionLink from '@/components/TransitionLink';
-import { ITEMS, TIER_COLORS, TOTAL_ITEMS, nextLockedTier, TIER_THRESHOLDS, type Category, type Tier } from '@/lib/data';
+import { ITEMS, TIER_COLORS, TOTAL_ITEMS, nextLockedTier, TIER_THRESHOLDS, isSystemComplete, type Category, type Tier } from '@/lib/data';
 import { useProgress } from '@/lib/storage';
 import { playKeyClick } from '@/lib/audio';
 
@@ -80,6 +80,7 @@ export default function ArchiveTerminal() {
   const filled  = Math.round((count / TOTAL_ITEMS) * 20);
   const pct     = Math.round((count / TOTAL_ITEMS) * 100);
   const nextTier = nextLockedTier(count);
+  const restored = hydrated && isSystemComplete(count);
 
   function btn(label: string, active: boolean, onClick: () => void, color?: string) {
     return (
@@ -127,7 +128,11 @@ export default function ArchiveTerminal() {
             {' '}({pct}%)
           </span>
         </div>
-        {!hydrated ? null : nextTier ? (
+        {!hydrated ? null : restored ? (
+          <div className="glow-gold text-lg" style={{ color: 'var(--term-gold)' }}>
+            ✓ SYSTÈME RESTAURÉ AVEC SUCCÈS — L&apos;ARCHIVE FAMILLE EST ENTIÈREMENT SAUVEGARDÉE
+          </div>
+        ) : nextTier ? (
           <div style={{ color: 'var(--term-amber)' }}>
             ⚠ ALERTE: DÉBLOQUEZ {TIER_THRESHOLDS[nextTier] - count} ARCHIVES DE PLUS POUR ACCÉDER AU NIVEAU {nextTier.toUpperCase()}
           </div>

@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
+import { ITEMS } from '@/lib/data';
 
 const STORAGE_KEY = 'archive_famille_v1';
 
@@ -20,6 +21,16 @@ function saveUnlocked(ids: Set<string>): void {
   } catch {
     // Storage unavailable — silently ignore
   }
+}
+
+/** Raccourci de test : tout débloquer sauf la dernière archive (finale) */
+export function unlockAllExceptLast(): void {
+  saveUnlocked(new Set(ITEMS.slice(0, -1).map((item) => item.id)));
+}
+
+/** Raccourci de test : tout débloquer (écran d'accueil restauré) */
+export function unlockAllForTest(): void {
+  saveUnlocked(new Set(ITEMS.map((item) => item.id)));
 }
 
 export function useProgress() {

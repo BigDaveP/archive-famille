@@ -1,11 +1,12 @@
 'use client';
 import { useState, useRef, useEffect, useCallback } from 'react';
 import TransitionLink from '@/components/TransitionLink';
-import { ITEMS, TIER_COLORS } from '@/lib/data';
+import FinaleModal from '@/components/FinaleModal';
+import { ITEMS, TIER_COLORS, TOTAL_ITEMS, isFinalArchive } from '@/lib/data';
 import { useProgress } from '@/lib/storage';
-import { playSuccess, playError, playKeyClick, playUnlock, playGlitch } from '@/lib/audio';
+import { playSuccess, playError, playKeyClick, playUnlock, playFinale, playGlitch } from '@/lib/audio';
 
-type Phase = 'idle' | 'decrypting' | 'success' | 'error';
+type Phase = 'idle' | 'decrypting' | 'success' | 'finale' | 'error';
 
 const GLITCH = '!@#$%^&*<>?/|ABCDEFGHIJabcdefghij0123456789░▒▓█';
 
@@ -29,8 +30,18 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
 
   useEffect(() => { inputRef.current?.focus(); }, []);
 
+  useEffect(() => {
+    if (phase !== 'finale') return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = prev; };
+  }, [phase]);
+
   const alreadyDone = item ? isUnlocked(item.id) : false;
   const isAvail     = item ? count >= item.requiredUnlocks : false;
+  const justSolved  = phase === 'success' || phase === 'finale' || phase === 'decrypting';
+  const showAlreadyDone = alreadyDone && !justSolved;
+  const showActivePuzzle = isAvail && (!alreadyDone || justSolved);
 
   const validate = useCallback(() => {
     if (!item || phase === 'decrypting') return;
@@ -38,26 +49,29 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
     const ok   = item.puzzle.answers.some(a => a.toLowerCase() === norm);
 
     if (ok) {
+      const completesSystem = isFinalArchive(item.id) && count === TOTAL_ITEMS - 1;
       setPhase('decrypting');
       playSuccess();
       let frame = 0;
+      const totalFrames = completesSystem ? 40 : 18;
       const iv = setInterval(() => {
-        setGlitchTxt(randomGlitch());
+        setGlitchTxt(randomGlitch(completesSystem ? 32 : 24));
         playGlitch();
         frame++;
-        if (frame >= 18) {
+        if (frame >= totalFrames) {
           clearInterval(iv);
           unlock(item.id);
-          setPhase('success');
-          playUnlock();
+          setPhase(completesSystem ? 'finale' : 'success');
+          if (completesSystem) playFinale();
+          else playUnlock();
         }
-      }, 80);
+      }, completesSystem ? 70 : 80);
     } else {
       setPhase('error');
       playError();
       setTimeout(() => setPhase('idle'), 2200);
     }
-  }, [item, answer, phase, unlock]);
+  }, [item, answer, phase, unlock, count]);
 
   if (!item) {
     return (
@@ -113,7 +127,7 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
       )}
 
       {/* ── Already unlocked ── */}
-      {alreadyDone && (
+      {showAlreadyDone && (
         <div className="border p-6 success-flash" style={{ borderColor: 'var(--term-green)' }}>
           <div className="text-xl glow mb-3">✓ ARCHIVE DÉJÀ RESTAURÉE</div>
           <div className="text-2xl mb-2" style={{ color: tierColor }}>{item.displayName}</div>
@@ -125,24 +139,25 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
       )}
 
       {/* ── Active puzzle ── */}
-      {isAvail && !alreadyDone && (
+      {showActivePuzzle && (
         <>
           {/* Step A */}
           <div className="border p-4 mb-4" style={{ borderColor: 'var(--term-border)' }}>
             <div className="text-xl mb-3" style={{ color: 'var(--term-amber)' }}>
               ═══ ÉTAPE A : L&apos;ENQUÊTE ═══
             </div>
-            <div className="text-sm mb-3" style={{ color: 'var(--term-green-dim)' }}>
-              {item.puzzle.missionText}
-            </div>
-            <div className="border p-3" style={{ borderColor: 'var(--term-border)', background: 'rgba(51,255,51,0.03)' }}>
-              <div className="flex gap-3 mb-2">
-                <span className="shrink-0 text-sm" style={{ color: 'var(--term-green-dim)' }}>[ CONTACTER ]</span>
-                <span className="text-base">{item.puzzle.contact}</span>
+            <div className="border p-3 space-y-3" style={{ borderColor: 'var(--term-border)', background: 'rgba(51,255,51,0.04)' }}>
+              <div className="flex gap-3">
+                <span className="shrink-0 text-sm font-bold" style={{ color: 'var(--term-amber)', minWidth: '6.5rem' }}>[ MISSION   ]</span>
+                <span className="text-base leading-relaxed" style={{ color: 'var(--term-green)' }}>{item.puzzle.missionText}</span>
               </div>
               <div className="flex gap-3">
-                <span className="shrink-0 text-sm" style={{ color: 'var(--term-green-dim)' }}>[ QUESTION  ]</span>
-                <span className="text-base leading-snug">{item.puzzle.question}</span>
+                <span className="shrink-0 text-sm font-bold" style={{ color: 'var(--term-amber)', minWidth: '6.5rem' }}>[ CONTACTER ]</span>
+                <span className="text-base" style={{ color: 'var(--term-green)' }}>{item.puzzle.contact}</span>
+              </div>
+              <div className="flex gap-3">
+                <span className="shrink-0 text-sm font-bold" style={{ color: 'var(--term-amber)', minWidth: '6.5rem' }}>[ QUESTION  ]</span>
+                <span className="text-base leading-snug" style={{ color: 'var(--term-green)' }}>{item.puzzle.question}</span>
               </div>
             </div>
           </div>
@@ -173,12 +188,12 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
 
             {(phase === 'idle' || phase === 'error') && (
               <>
-                <div className="text-sm mb-3" style={{ color: 'var(--term-green-dim)' }}>
-                  Une fois que {item.puzzle.contact} vous a donné la réponse, tapez-la ici :
+                <div className="text-base mb-3 leading-relaxed" style={{ color: 'var(--term-green-mid)' }}>
+                  Une fois que <span style={{ color: 'var(--term-green)' }}>{item.puzzle.contact}</span> vous a donné la réponse, tapez-la ici :
                 </div>
 
                 <div className="flex items-center gap-2 mb-4">
-                  <span style={{ color: 'var(--term-green-dim)' }}>&gt;</span>
+                  <span style={{ color: 'var(--term-green-mid)' }}>&gt;</span>
                   <input
                     ref={inputRef}
                     type="text"
@@ -188,7 +203,7 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
                     placeholder="ENTREZ LE MOT-CLÉ..."
                     className={`flex-1 py-1 px-2 text-base ${phase === 'error' ? 'shake' : ''}`}
                     style={{
-                      borderBottom: `1px solid ${phase === 'error' ? 'var(--term-red)' : 'var(--term-green-dim)'}`,
+                      borderBottom: `1px solid ${phase === 'error' ? 'var(--term-red)' : 'var(--term-green-mid)'}`,
                       color: phase === 'error' ? 'var(--term-red)' : 'var(--term-green)',
                     }}
                   />
@@ -213,7 +228,7 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
                     <button
                       onClick={() => { setShowHint(v => !v); playKeyClick(); }}
                       className="border px-4 py-2 text-base transition-colors hover:bg-white/5"
-                      style={{ borderColor: 'var(--term-green-dim)', color: 'var(--term-green-dim)' }}
+                      style={{ borderColor: 'var(--term-green-mid)', color: 'var(--term-green-mid)' }}
                     >
                       {showHint ? '[ MASQUER L\'INDICE ]' : '[ INDICE S.O.S. ]'}
                     </button>
@@ -237,6 +252,14 @@ export default function PuzzleTerminal({ itemId }: { itemId: string }) {
         root@archive_famille:~#{' '}
         <span className="cursor" style={{ color: 'var(--term-green)' }}>█</span>
       </div>
+
+      {phase === 'finale' && (
+        <FinaleModal
+          displayName={item.displayName}
+          cardDescription={item.cardDescription}
+          tierColor={tierColor}
+        />
+      )}
     </div>
   );
 }

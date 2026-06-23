@@ -110,7 +110,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: photoMission(
       'SIZE_BUG',
-      'Épreuve photo — illusion d\'optique géante : prenez une photo en perspective forcée où un tout petit objet de la maison a l\'air d\'un monstre géant à côté de vous (ex. : placez un petit dinosaure ou un toutou tout près de la caméra pour qu\'il ait l\'air plus gros que vous au fond de la pièce).',
+      'Épreuve Physique (Photo) — L\'illusion d\'optique géante. Prends une photo en perspective forcée où un tout petit objet de la maison a l\'air d\'un monstre géant à côté de toi (ex. : place un petit dinosaure ou un toutou tout près de la caméra pour qu\'il ait l\'air plus gros que toi qui te tiens au fond de la pièce).',
       'BIG_DAVE',
     ),
     cardDescription: 'Carte Personnage — David.',
@@ -131,9 +131,9 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: photoMission(
       'UNIT_OLIVIER',
-      'Épreuve photo : pour débloquer l\'accès au fichier du géant de la famille, trouvez l\'objet le plus lourd de la maison que vous pouvez soulever ensemble. Prenez une photo de vous deux en train de le porter.',
+      'Épreuve Physique (Photo) — Pour débloquer l\'accès au fichier du géant de la famille, trouvez l\'objet le plus lourd de la maison que vous pouvez soulever ensemble. Prenez une photo de vous deux en train de le porter.',
       'THE_BALD_GIANT',
-      'Le code est remis automatiquement après réception de la photo.',
+      'Code remis automatiquement après réception de la photo.',
     ),
     cardDescription: 'Carte Personnage — Bald Olivier.',
   },
@@ -171,11 +171,11 @@ export const ITEMS: ArchiveItem[] = [
     cardDescription: 'Carte Personnage — Krysto.',
   },
   {
-    id: '007', filename: 'FICHIER_BLEU_MEREDITH.dat', displayName: 'MEREDITH',
+    id: '007', filename: 'FICHIER_BLEU_MÉRÉDITH.dat', displayName: 'MÉRÉDITH',
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: photoMission(
       'HELMET_UPGRADE',
-      'Épreuve photo : personnalise ton casque avec ton propre style (collants, brillants, etc.). Envoie une photo du résultat en gros plan.',
+      'Épreuve Physique (Photo) — Personnalise ton casque avec ton propre style (collants, brillants, etc.). Envoie une photo du résultat en gros plan.',
       'GEAR_CUSTOMIZED',
     ),
     cardDescription: 'Carte Personnage — Mérédith.',
@@ -185,9 +185,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: videoMission(
       'QUEEN_DANCE',
-      'Épreuve vidéo — réservée à la « Princess » du groupe. Sa Majesté ne danse pas elle-même : elle convainc une personne de son entourage, un peu moins gracieuse, de livrer sa meilleure performance. Envoyez une vidéo de 30 secondes de cette danse.',
+      'Épreuve Physique (Vidéo) — Ce fichier est réservé à la « Princess » du groupe, reconnue pour ses talents et son amour de la danse. Sa Majesté ne doit pas danser elle-même : elle doit convaincre une personne de son entourage, reconnue pour être un peu moins gracieuse ou moins habituée aux pistes de danse, de livrer sa meilleure performance. Échangez un moment de complicité et envoyez une vidéo de 30 secondes de cette danse.',
       'GRACE',
-      'La cour doit danser, pas la princesse !',
     ),
     cardDescription: 'Carte Personnage — Elerina.',
   },
@@ -196,7 +195,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: photoMission(
       'LIVING_ROOM_GLITCH',
-      'Épreuve photo : l\'Agent Elyse a piqué du nez dans le salon ? Empilez délicatement 4 à 5 objets légers du salon sur sa tête sans la réveiller. Prenez une photo de la tour en équilibre.',
+      'Épreuve Physique (Photo) — L\'Agent Elyse a piqué du nez dans le salon pendant un film ? C\'est le moment d\'infiltrer la zone. Empilez délicatement 4 à 5 objets légers du salon sur sa tête sans la réveiller ni faire de bruit. Prenez une photo de la tour en équilibre.',
       'NINJA_SNOOZE',
     ),
     cardDescription: 'Carte Personnage — Elyse.',
@@ -206,7 +205,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: photoMission(
       'HIDE_SEEK',
-      'Épreuve photo : prenez une photo du plus jeune caché dans un endroit improbable de la maison (sous un tas de coussins, dans une boîte, etc.).',
+      'Épreuve Physique (Photo) — Le système exige une preuve de camouflage. Prenez une photo du plus jeune caché dans un endroit improbable de la maison (sous un tas de coussins, dans une boîte, etc.).',
       'CHIPMUNK',
     ),
     cardDescription: 'Carte Personnage — Malcom.',
@@ -216,7 +215,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: photoMission(
       'BREAD_HACK',
-      'Épreuve photo : préparez un pain maison et écrivez le mot « ORACLE » dessus (pâte, gravure au couteau ou ingrédient). Photographiez votre pain prêt à être dégusté.',
+      'Épreuve Physique (Photo) — Active le mode cuisine moléculaire. Tu dois préparer un pain maison et réussir à écrire le mot « ORACLE » dessus avant ou après la cuisson (avec de la pâte, gravé au couteau, ou écrit avec un ingrédient). Envoie une photo de ton pain prêt à être dégusté.',
       'BAKERY_DECODE',
     ),
     cardDescription: 'Carte Personnage — Mathilde.',
@@ -226,7 +225,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: messenger(
       'La marraine d\'Audrey',
-      'Étape 1 : trouvez qui est la marraine d\'Audrey. Étape 2 : posez-lui la question ci-dessous.',
+      'Mission Messenger — Étape 1 : trouve qui est la marraine d\'Audrey. Étape 2 : pose-lui cette question.',
       'Dans quoi Audrey a-t-elle dormi la toute première nuit où sa marraine l\'a gardée ?',
       'TIROIR',
     ),
@@ -237,7 +236,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: photoMission(
       'CAMO_OBJECT',
-      'Mission camouflage : cachez un petit objet (fourchette, figurine) en plein milieu du salon pour qu\'il se confonde avec le décor. Photographiez de loin pour voir si l\'ARCHIVISTE le repère.',
+      'Épreuve Physique (Photo) — Mission camouflage d\'objets. Choisis un petit objet (comme une fourchette ou une petite figurine) et cache-le en plein milieu du salon, de façon à ce qu\'il se confonde parfaitement avec le décor (ex. : une fourchette cachée le long du pied d\'une chaise en bois). Prends une photo d\'un peu plus loin pour voir si l\'ARCHIVISTE arrive à la repérer.',
       'GHOST_GEAR',
     ),
     cardDescription: 'Carte Personnage — Malory.',
@@ -258,18 +257,18 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: messenger(
       'Nadine',
-      'Mission Messenger : Nadine est une grande voyageuse qui planifie déjà une retraite remplie d\'aventure. Demandez-lui :',
+      'Mission Messenger : Nadine est une grande voyageuse qui planifie déjà une retraite remplie d\'aventure. Une destination en particulier l\'a marquée.',
       'Quel est le voyage ou l\'endroit dans le monde qui t\'a le plus marquée ?',
       'PARIS',
     ),
     cardDescription: 'Carte Personnage — Nadine.',
   },
   {
-    id: '016', filename: 'FICHIER_BLEU_GENEVIEVE.dat', displayName: 'GENEVIEVE',
+    id: '016', filename: 'FICHIER_BLEU_GENVIÈVE.dat', displayName: 'GENEVIÈVE',
     category: 'Personnage', tier: 'Bleu', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : la belle maison de Geneviève a été achetée conjointement en 2003.',
+      'Mission Messenger : nous aimons tous d\'amour la belle maison de Geneviève, achetée conjointement en 2003.',
       'En quelle année l\'a-t-elle rachetée entièrement, toute seule ?',
       '2011',
     ),
@@ -282,7 +281,7 @@ export const ITEMS: ArchiveItem[] = [
       'Hugo',
       'Mission Messenger : demandez à Hugo.',
       'Quel était le tout premier employeur en ventes de Martin ?',
-      ['STEREO_PLUS', 'STEREO PLUS', 'STÉRÉO PLUS', 'STERE O PLUS'],
+      ['STEREO_PLUS', 'STEREO PLUS', 'STÉRÉO PLUS'],
     ),
     cardDescription: 'Carte Personnage — Martin.',
   },
@@ -295,7 +294,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Or', requiredUnlocks: 0,
     puzzle: photoMission(
       'VERT_DEERE',
-      'Hommage à Papi Michel : prenez une photo de l\'aliment le plus sucré ou de la gâterie la plus décadente de votre cuisine, placé juste à côté d\'un objet vert flash (pour le fameux tracteur John Deere).',
+      'Épreuve Physique (Photo) — Ce fichier rend hommage à un personnage haut en couleur qui savait tester la patience de tout le monde, mais qui avait des passions bien précises : le sucre (malgré son diabète), les huîtres et, par-dessus tout, dépenser les économies familiales sur un rutilant tracteur John Deere. Recréez un de ses contrastes légendaires : prenez une photo de l\'aliment le plus sucré ou de la gâterie la plus décadente de votre cuisine, placé juste à côté d\'un objet vert flash.',
       ['HÉRITAGE', 'HERITAGE'],
     ),
     cardDescription: 'Carte Personnage — Papi Michel.',
@@ -305,7 +304,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Or', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : ce pilier de la famille laisse une image forte de dame propre et fière. Une faille linguistique unique a été identifiée : un juron bien à elle.',
+      'Mission Messenger — Ce pilier de la famille laisse derrière elle une image forte de dame propre et fière. Une faille linguistique unique a été identifiée dans son système de communication : un juron bien à elle, agissant comme une décharge d\'énergie brute.',
       'Quel était ce mot de puissance, ce juron légendaire d\'Edith ?',
       'CYCLONE',
     ),
@@ -316,7 +315,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Or', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : Adrienne détenait la formule magique pour cuisiner les meilleurs beignes de toute la famille. Elle a transmis tout son savoir-faire à une personne en particulier.',
+      'Mission Messenger — Adrienne détenait un secret culinaire légendaire : la formule magique pour cuisiner les meilleurs beignes de toute la famille. Avant de nous quitter, elle a transmis tout son savoir-faire à une personne en particulier pour s\'assurer que la tradition continue.',
       'Qui a eu la chance d\'apprendre à faire les fameux beignes d\'Adrienne ?',
       'AUDREY',
     ),
@@ -327,7 +326,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Or', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : Albertine partage exactement la même date de fête que le petit dernier de la grande famille.',
+      'Mission Messenger — Albertine partage un lien unique avec la toute nouvelle génération de notre grande famille. Même si plusieurs années les séparent, elle a exactement la même date de fête que le petit dernier qui vient d\'arriver parmi nous.',
       'Quel est le prénom de ce nouveau venu avec qui Albertine partage son anniversaire ?',
       'ARNAUD',
     ),
@@ -338,7 +337,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Personnage', tier: 'Or', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : Rose faisait incontestablement le meilleur ragoût de boulettes de la famille. La tradition a ensuite été reprise et honorée.',
+      'Mission Messenger — Rose avait un talent fou pour rassembler tout le monde autour de la table, surtout lorsqu\'elle cuisinait son plat signature. Elle faisait incontestablement le meilleur ragoût de boulettes de la famille, une tradition gourmande reprise et honorée par la suite.',
       'Qui a fièrement repris le flambeau du fameux ragoût de boulettes après Rose ?',
       'NADINE',
     ),
@@ -354,9 +353,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Sort', tier: 'Jaune', requiredUnlocks: 0,
     puzzle: photoMission(
       'FARINE',
-      'En l\'honneur de Mario Farine : couvrez le visage de trois personnes ou plus avec de la farine et prenez une photo d\'équipe.',
+      'Épreuve Physique (Photo) — Cette adorable boule de poil qui a saisi le cœur de tous en une vie si courte a fait une énorme gaffe un jour pendant que sa famille cuisinait, ce qui lui a valu le surnom de « Mario Farine ». Votre mission : couvrir le visage de trois personnes ou plus avec de la farine et prendre une photo d\'équipe en l\'honneur de ce moment.',
       'CANAILLE',
-      'Minimum 3 personnes farinées sur la photo.',
     ),
     cardDescription: 'Carte Animal — Mario Farine.',
   },
@@ -365,7 +363,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Sort', tier: 'Jaune', requiredUnlocks: 0,
     puzzle: photoMission(
       'GROSSE_PATATE',
-      'Hommage à Moldu, le chien géant et doux : trouvez une personne (ou un immense toutou) et faites-lui un câlin style « gros pot de colle » en vous laissant tomber de tout votre long, comme si vous pesiez 150 livres.',
+      'Épreuve Physique (Photo) — Ce fichier rend hommage à Moldu, le chien géant. Malgré sa taille impressionnante, c\'était la plus belle et la plus douce des patates. Recréez l\'effet « gros toutou lourd » : trouvez une personne (ou un immense toutou / un gros paquet d\'oreillers) et faites-lui un câlin style « gros pot de colle » en vous laissant tomber de tout votre long, comme si vous pesiez 150 livres.',
       ['GÉANT_DOUX', 'GEANT_DOUX'],
     ),
     cardDescription: 'Carte Animal — Moldu le doux géant.',
@@ -375,7 +373,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Sort', tier: 'Jaune', requiredUnlocks: 0,
     puzzle: messenger(
       'David',
-      'Mission Messenger : ce dossier est dédié à Babooshka. Son nom évoque Kate Bush, mais cache une particularité bien familière. Menez l\'enquête auprès de David.',
+      'Mission Messenger — Ce dossier crypté est dédié à Babooshka. Si son nom fait directement référence à la célèbre chanson de Kate Bush, il cache également une origine beaucoup plus concrète liée à une particularité bien familière. Menez votre enquête auprès de David.',
       'Quelle est cette fameuse particularité de Babooshka ?',
       'MIAULEMENT',
     ),
@@ -386,7 +384,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Sort', tier: 'Jaune', requiredUnlocks: 0,
     puzzle: {
       contact: ORACLE_EMAIL,
-      missionText: 'Épreuve photo/vidéo — prouvez que vous méritez de contrôler Brindille, Rondoudou et Sushi. Prenez une photo ou courte vidéo de vous accomplissant la sainte trinité des comportements de chat : (1) L\'effet Brindille — entrer dans une boîte beaucoup trop petite ; (2) L\'effet Rondoudou — face de chat fâché ou regard d\'hypnotiseur ; (3) L\'effet Sushi — s\'étirer de tout votre long en feignant une paresse extrême. Envoyez à oraclecore01@gmail.com avec ORACLE_CORE_01 : TRIO_CHATS.',
+      missionText: 'Épreuve Physique (Photo/Vidéo) — Ce fichier contient une surcharge d\'énergie féline et débloque le trio légendaire : Brindille, Rondoudou et Sushi. Pour prouver que vous êtes digne de contrôler ces trois félins, accomplissez la sainte trinité des comportements de chat : (1) L\'effet Brindille — entrer dans une boîte beaucoup trop petite ; (2) L\'effet Rondoudou — face de chat fâché ou regard d\'hypnotiseur ; (3) L\'effet Sushi — s\'étirer de tout votre long en feignant une paresse extrême. Envoyez à oraclecore01@gmail.com avec ORACLE_CORE_01 : TRIO_CHATS.',
       question: 'Une fois la preuve envoyée, entrez le code de décryptage reçu.',
       answers: ans('MIAOU3'),
     },
@@ -397,8 +395,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Sort', tier: 'Jaune', requiredUnlocks: 0,
     puzzle: messenger(
       'Ève',
-      'Mission Messenger : Muki, le grand chien noir du refuge, est devenu soudainement collant et ultra-attentif envers sa mère.',
-      'Qu\'est-ce qu\'Ève a découvert qui se cachait derrière ce changement de comportement ?',
+      'Mission Messenger — Muki, ce magnifique grand chien noir du refuge. Autrefois véritable boule d\'énergie qui ne pouvait s\'empêcher d\'aboyer, il a appris à devenir le plus calme des protecteurs. Un jour, Muki a soudainement adopté une attitude complètement différente envers sa mère, devenant collant et ultra-attentif.',
+      'Qu\'est-ce qu\'Ève a découvert qui se cachait derrière ce soudain changement de comportement ?',
       'GROSSESSE',
     ),
     cardDescription: 'Carte Animal — Muki le Protecteur.',
@@ -408,7 +406,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Sort', tier: 'Jaune', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : à la mort d\'une figure mythique du cinéma d\'action, Daniel a donné son nom (divisé en deux) à ses deux petits chiens Ruby et Opale.',
+      'Mission Messenger — Ce double secteur sécurise l\'accès aux cartes de Ruby et Opale. À la mort d\'une figure mythique du cinéma d\'action international, Daniel a voulu honorer sa mémoire en donnant son nom (divisé en deux) à ses deux petits chiens.',
       'Quel est ce nom célèbre ?',
       ['CHUCK_NORRIS', 'CHUCK NORRIS'],
     ),
@@ -423,7 +421,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Nadine',
-      'Mission Messenger : Longue-Rive, petite ville de la Côte-Nord aux lumières de Noël permanentes et aux statues géantes dans la rue. Un fan légendaire de cette ville existe dans l\'entourage.',
+      'Mission Messenger — Ce dossier archive les données de Longue-Rive, petite ville de la Côte-Nord où les résidents gardent mystérieusement leurs lumières de Noël allumées à l\'année longue, et où un sculpteur de bois douteux bloque la rue pour faire traverser ses statues géantes. Une personne en particulier dans l\'entourage était un très grand fan de cette ville.',
       'Qui est ce fan légendaire de Longue-Rive ?',
       'MARTIN',
     ),
@@ -434,7 +432,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Nadine',
-      'Mission Messenger : village perdu avec vue sur le fleuve. Interrogez Nadine.',
+      'Mission Messenger — Secteur géographique verrouillé. Les données indiquent un village perdu avec vue sur le fleuve. Pour cartographier cette zone, interrogez l\'entité Nadine.',
       'Quelle femme, qui arrivait toujours comme une brise vivifiante, est née à Rivière-au-Tonnerre ?',
       'EDITH',
     ),
@@ -445,7 +443,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : c\'est ici qu\'une grande partie de la famille s\'est établie. Un lieu où le temps se lit à l\'ombre d\'une horloge solaire et où la terre vibre au rythme d\'une immense usine d\'aluminium.',
+      'Mission Messenger — Restauration de la zone d\'ancrage principal. Les archives indiquent que c\'est ici, sur ces terres côtières, qu\'une grande partie de la famille s\'est établie. Localisez le point de synchronisation : un lieu où le temps se lit à l\'ombre d\'une horloge solaire et où la terre vibre au rythme d\'une immense usine d\'aluminium.',
       'Quelle est cette ville côtière ?',
       ['SEPT_ILES', 'SEPT-ILES', 'SEPT ÎLES'],
     ),
@@ -456,7 +454,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : zone côtière avec une force de la nature haute de 33 mètres au centre du village.',
+      'Mission Messenger — Alerte : flux de données perturbé par un grondement hydraulique. Cette zone côtière cache en son plein centre une force de la nature haute de 33 mètres qui alimentait autrefois le village.',
       'Qu\'est-ce qui tombe sans jamais se blesser au cœur de Rivière-du-Loup ?',
       'CHUTE',
     ),
@@ -467,7 +465,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : La Pocatière, où a habité le singulier Papi Michel. Cet endroit possède tout de même de petites lumières dans l\'obscurité.',
+      'Mission Messenger — Ce secteur est dédié à La Pocatière. Une ville où a habité le singulier Papi Michel, laissant derrière lui des souvenirs très mal vécus par plusieurs membres de la famille. Heureusement, cet endroit possède tout de même de petites lumières dans l\'obscurité.',
       'Quel animal de la famille est né à La Pocatière ?',
       'BABOOSHKA',
     ),
@@ -478,7 +476,7 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : secteur géographique majeur.',
+      'Mission Messenger — Secteur géographique majeur.',
       'Quel grand fleuve passe tout juste au pied de la ville de Québec ?',
       ['ST_LAURENT', 'ST-LAURENT', 'SAINT-LAURENT', 'SAINT LAURENT'],
     ),
@@ -489,8 +487,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : plusieurs membres de la famille y ont habité à des moments différents, mais pour la même raison unique.',
-      'Pour quelle raison tous se sont-ils installés à Sherbrooke ?',
+      'Mission Messenger — Ce dossier concerne Sherbrooke. Plusieurs membres de la famille y ont habité à des moments complètement différents de leur vie, mais ils s\'y sont tous installés pour la même et unique raison.',
+      'Quelle est cette raison ?',
       ['UNIVERSITÉ', 'UNIVERSITE'],
     ),
     cardDescription: 'Carte Lieu — Sherbrooke.',
@@ -500,8 +498,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : le IGA, lieu marquant où plusieurs personnes de la famille ont travaillé longtemps.',
-      'Quel est le nom de la petite mascotte animée au chandail rouge de cette chaîne d\'épiceries ?',
+      'Mission Messenger — Ce dossier est dédié au IGA. Ce lieu est marquant pour la famille puisque quelques personnes y ont travaillé pendant une grande partie de leur vie.',
+      'Quel est le nom de la petite mascotte animée au chandail rouge qui représentait fièrement cette chaîne d\'épiceries ?',
       ['TI-GA', 'TIGA', 'TI GA'],
     ),
     cardDescription: 'Carte Lieu — IGA.',
@@ -511,8 +509,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Lieu', tier: 'Vert', requiredUnlocks: 0,
     puzzle: messenger(
       'Les 4 joueuses',
-      'Mission Messenger : c\'est le cœur de cette opération — la ville natale partagée par les 4 joueuses de cet ARG.',
-      'Entrez le nom complet de cette municipalité de la Côte-Nord.',
+      'Mission Messenger — Ce dossier archive les données d\'un lieu d\'origine crucial. C\'est le cœur même de toute cette opération, puisque les 4 joueuses de cet ARG partagent la même ville natale.',
+      'Entrez le nom complet de cette municipalité de la Côte-Nord d\'où vous venez toutes les quatre.',
       ['HAVRE_ST_PIERRE', 'HAVRE-SAINT-PIERRE', 'HAVRE SAINT PIERRE'],
     ),
     cardDescription: 'Carte Lieu — Havre-Saint-Pierre.',
@@ -525,10 +523,11 @@ export const ITEMS: ArchiveItem[] = [
     id: '038', filename: 'FICHIER_ROUGE_HEADBANZ.sh', displayName: 'HEADBANZ',
     category: 'Objet', tier: 'Rouge', requiredUnlocks: 0,
     puzzle: messenger(
-      '[ À DÉFINIR ]',
-      'Mission Messenger : en attente de vos détails pour ce fichier.',
-      '[ À DÉFINIR : Question Headbanz ]',
-      ['A_DÉTERMINER', 'A DÉTERMINER', 'A_DETERMINER'],
+      'Hugo',
+      'Mission Messenger — Quel membre de la famille dominait au Headbanz ?',
+      'Quelle personne de la famille était la meilleure au Headbanz ?',
+      ['PAPI_MICHEL', 'PAPI MICHEL'],
+      'Demander à Hugo.',
     ),
     cardDescription: 'Carte Objet — Headbanz.',
   },
@@ -537,8 +536,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Objet', tier: 'Rouge', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : après son décès, l\'urne de Papi Michel s\'est retrouvée temporairement dans le garde-robe de quelle personne ultra-sensible de la famille ?',
-      'Dans le garde-robe de qui l\'urne a-t-elle déménagé ?',
+      'Mission Messenger — Ce dossier sécurise les données de l\'urne de Papi Michel. Après son décès, l\'urne s\'est retrouvée temporairement installée dans une cachette bien spéciale, parce qu\'une personne ultra-sensible voulait absolument s\'assurer du bien-être et de la sécurité du défunt.',
+      'Dans le garde-robe de quelle personne de la famille l\'urne a-t-elle déménagé ?',
       'HUGO',
     ),
     cardDescription: 'Carte Objet — L\'Urne.',
@@ -548,8 +547,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Objet', tier: 'Rouge', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : la crème solaire a cruellement manqué à trois personnes l\'été passé. Parmi ce trio de homards, qui a attrapé son coup de soleil directement sur le dessus du pied ?',
-      'Qui a eu le coup de soleil sur le dessus du pied ?',
+      'Mission Messenger — La crème solaire, bouclier indispensable qui a pourtant cruellement manqué à trois personnes de la famille l\'été passé, leur valant d\'énormes coups de soleil par pur manque de réflexion.',
+      'Parmi ce trio de homards, qui a réussi l\'exploit d\'attraper son coup de soleil directement sur le dessus du pied ?',
       'DAVID',
     ),
     cardDescription: 'Carte Objet — La Crème Solaire.',
@@ -559,8 +558,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Objet', tier: 'Rouge', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : Hugo est un artiste de l\'origami. Il a offert ses œuvres en cadeau. Qui est la toute première personne de la famille à avoir reçu ce cadeau unique ? (Indice : elle a pleuré !)',
-      'Qui a reçu le tout premier origami de Hugo ?',
+      'Mission Messenger — Hugo est un artiste accompli dans plusieurs domaines, et l\'art du pliage de papier en fait définitivement partie. Il a déjà offert en cadeau certaines de ses œuvres touchantes. (Indice : elle a pleuré !)',
+      'Qui est la toute première personne de la famille à avoir reçu ce cadeau unique ?',
       'ELYSE',
     ),
     cardDescription: 'Carte Objet — L\'Origami.',
@@ -570,8 +569,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Objet', tier: 'Rouge', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : Nadine est l\'experte tricoteuse, Lauriane s\'est tournée vers le crochet. Vrai ou faux : Nadine a montré à Lauriane l\'art du crochet ?',
-      'Entrez VRAI ou FAUX.',
+      'Mission Messenger — Dans la famille, vous êtes plusieurs à transformer la laine en œuvre d\'art, mais pas tous de la même manière. L\'experte incontestée ici est Nadine, tricoteuse depuis des années, alors que sa fille Lauriane s\'est plutôt tournée vers le crochet.',
+      'Vrai ou faux : Nadine a montré à Lauriane l\'art du crochet ?',
       'FAUX',
     ),
     cardDescription: 'Carte Objet — Balle de laine.',
@@ -581,8 +580,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Objet', tier: 'Rouge', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : le tracteur John Deere de Michel a causé bien des problèmes. Qui a pris en charge toutes les démarches pour obtenir le remboursement ?',
-      'Qui s\'est battue pour obtenir le remboursement du tracteur ?',
+      'Mission Messenger — À sa mort, Michel a laissé derrière lui un immense tracteur John Deere acheté par pur excès (il n\'a même jamais été capable de monter dessus, c\'était seulement pour dépenser). Plusieurs ont dû s\'impliquer.',
+      'Qui a dû prendre en charge toutes les démarches, s\'obstiner avec les vendeurs initiaux et se battre pour obtenir le remboursement de cette machine ?',
       'NADINE',
     ),
     cardDescription: 'Carte Objet — Tracteur John Deere.',
@@ -592,8 +591,8 @@ export const ITEMS: ArchiveItem[] = [
     category: 'Objet', tier: 'Rouge', requiredUnlocks: 0,
     puzzle: messenger(
       'Famille',
-      'Mission Messenger : Danny le marin a permis d\'explorer le rivage de Havre-Saint-Pierre. Équipé d\'un poêle à bois, il a même cuisiné pour le groupe.',
-      'Quel repas réconfortant Danny a-t-il préparé sur son poêle à bois ?',
+      'Mission Messenger — Ce dossier archive les données de Danny le marin et son poêle à bois mémorable. Durant le séjour de l\'an passé, Danny s\'est démarqué en permettant d\'explorer le rivage de Havre-Saint-Pierre à bord de son bateau. Équipé d\'un lit, d\'une salle de bain et d\'un magnifique poêle à bois, ce navire a fourni tout l\'essentiel pour une excursion réussie. Danny a même cuisiné directement sur ce poêle pour le groupe.',
+      'Quel repas réconfortant a-t-il préparé ?',
       'SPAGHETTI',
     ),
     cardDescription: 'Carte Objet — Danny le marin.',

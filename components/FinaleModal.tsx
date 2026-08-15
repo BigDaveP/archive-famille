@@ -56,7 +56,7 @@ export default function FinaleModal({
             <p>Félicitations, agents. Vous avez restauré les {TOTAL_ITEMS} archives perdues.</p>
             <p>L&apos;Archive Famille est sauvegardée. Le noyau est stable à 100%.</p>
             <p className="text-base glow-gold" style={{ color: 'var(--term-gold)' }}>
-              Vous allez recevoir une livraison officielle par notre unité &quot;bêta&quot;.
+              Vous allez recevoir une livraison officielle par notre unité &quot;bêta&quot; le 16 août 2026.
             </p>
           </div>
           <TransitionLink
